@@ -10,6 +10,7 @@
     <li><a href="#the-design">The design</a></li>
     <li><a href="#how-to-use-the-source-code">How to use the source code</a></li>
     <li><a href="#the-bottom-line">The Bottom Line</a></li>
+    <li><a href="#reference">Reference</a></li>
   </ol>
 </details>
 
@@ -110,3 +111,7 @@ I'm thrilled to share it with you all! Dive in and enjoy exploring its features.
 
 Best,
 Hoang Ng
+
+### Reference
+
+Howard, A.G. et al., 2017. MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications. CoRR, abs/1704.04861. Available at: http://arxiv.org/abs/1704.04861.
