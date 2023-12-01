@@ -1,4 +1,4 @@
-import os, sys, shutil, cv2
+import os, sys
 
 # ________________ HANDLE THE PATH THING ________________ #
 # get the absolute path of the script's directory
@@ -15,16 +15,13 @@ from Bird_classification.class_indices import Class_indices
 
 
 class MobileNet_classifier:
-
     """
-
     This class is the core part of the project. It loads a chosen model of MobileNet, class indices and retrieve uploaded images to use in prediction generating a series of probabilities for class indices, the class index, with the highest probability, will be chosen and mapped with its label (i.e., common name) and scientific name.
 
     """
 
     def __init__(self, image):
         """
-
         This initialization part is to load required items, including a chosen model, class indices, and the test image.
 
         """
@@ -38,7 +35,6 @@ class MobileNet_classifier:
 
     def make_prediction(self):
         """
-
         This function handles the prediciton process.
 
         """

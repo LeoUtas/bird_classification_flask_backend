@@ -98,23 +98,6 @@ def upload_image_MobileNet():
                     predicted_index,
                 ) = classifier.make_prediction()
 
-                path_to_image_source = os.path.join(
-                    app.config["DETECT_FOLDER"], unique_image_name
-                )
-                path_to_image_destination = os.path.join(
-                    app.config["UPLOAD_FOLDER"], "detect"
-                )
-
-                if not os.path.exists(path_to_image_destination):
-                    os.makedirs(path_to_image_destination)
-
-                shutil.move(path_to_image_source, path_to_image_destination)
-
-                full_path_to_the_image = os.path.join(
-                    path_to_image_destination,
-                    unique_image_name,
-                )
-
                 predicted_label = predicted_label.capitalize()
                 # to handle the scientific name styling
                 predicted_scientific_name = (
@@ -125,7 +108,7 @@ def upload_image_MobileNet():
 
                 execution_time = round(time() - start_time, 2)
 
-                flash(full_path_to_the_image)
+                flash(full_image_path)
                 flash(round(float(predicted_probability), 4))
                 flash(predicted_label)
                 flash(predicted_scientific_name)

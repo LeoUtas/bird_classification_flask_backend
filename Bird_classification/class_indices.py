@@ -13,7 +13,6 @@ from utils import get_classes
 
 class Class_indices:
     """
-
     This is to handle the classes in the bird classification data. There are 524 classes of bird (i.e., labelling their common and scientific names). Each image is listed as a record (i.e., a row) in a CSV file containing the information of class id (i.e., class index), common name, scientific name, etc.
 
     """

@@ -32,7 +32,6 @@ The orginal paper of MobileNet <a href="https://arxiv.org/pdf/1704.04861.pdf">(H
 The application documentation of <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/mobilenet/MobileNet"> MobileNet </a> using TensorFlow v2.14.0.
 
 -   TensorFlow
--   YOLOv8
 -   numpy
 -   pandas
 -   Flask
@@ -62,16 +61,16 @@ I chose the MobileNet architecture for the <a href="https://bird-classification5
 -   Fork this repository (https://github.com/LeoUtas/bird_classification_flask_MobileNet.git)
 -   Get the docker container ready
 
-    -   Run docker build (name the app whatever you want on your local machine, and please note that it might take a while for installing all the required dependencies to your local docker image)
+    -   Run docker build (it might take a while for installing all the required dependencies to your local docker image)
 
     ```cmd
-    docker build -t <name of the app> .
+    docker build -t <name of the docker image> .
     ```
 
     -   Run the Docker Container (once the docker image is built, you will run a docker container, map it to the port 5000)
 
     ```cmd
-    docker run -p 5000:5000 -v $(pwd):/app --name <name of the container> <name of the app>
+    docker run -p 5000:5000 -v "$(PWD):/app" --name <name of the container> <name of the docker image>
     ```
 
 -   Run the app.py on the docker container
