@@ -21,8 +21,8 @@ This repository houses the source code of a web application designed for bird sp
 ### Demo
 
 <p align="center">
-  <a href="Video URL">
-    <img src="/video/bird-app524.gif" width="480" alt="Alt text for the image"/>
+  <a href="GIF">
+    <img src="/video/bird-app524.gif" width="480" alt=""/>
   </a>
 </p>
 
@@ -49,9 +49,9 @@ This project utilizes a bird species dataset provided by <a href="https://www.ka
 
 I developed a bird classification web application with three distinct approaches:
 
--   A 2-stage model using YOLOv8 architecture, <a href="https://github.com/LeoUtas/bird_classification_flask_MobileNet.git">(source code)</a>;
--   A 1-stage model using MobileNet architectures, <a href="#introduction">(source code)</a>; and
--   A combination of the YOLOv8 and MobileNet architectures, <a href="#introduction">(source code)</a>
+-   A 2-stage model using YOLOv8 architecture, <a href="https://github.com/LeoUtas/bird_classification_flask_YOLOv8.git">(source code)</a>;
+-   A 1-stage model using MobileNet architectures, <a href="https://github.com/LeoUtas/bird_classification_flask_MobileNet.git">(source code)</a>; and
+-   A combination of the YOLOv8 and MobileNet architectures, <a href="https://github.com/LeoUtas/bird_classification_flask_2models.git">(source code)</a>
 
 I chose the MobileNet architecture for the <a href="https://bird-classification524-b310a542793a.herokuapp.com/"> final web application </a> after evaluating different models. Although the YOLO8n object detection feature enhances functionality, it is not critical for this specific task and could potentially reduce performance speed. YOLO8n is therefore excluded from this version. Nevertheless, in situations where object measurement is key, like in the detection and measurement of fish samples, integrating an object detector like YOLO8n can be extremely valuable. This repository includes the source code for the web application.
 
