@@ -40,6 +40,7 @@ The application documentation of <a href="https://www.tensorflow.org/api_docs/py
 -   HTML
 -   CSS (Bootstrap)
 -   Docker
+-   Github Action
 
 ### Data source
 
