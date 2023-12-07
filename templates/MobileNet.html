@@ -48,7 +48,7 @@
 
         {% with messages = get_flashed_messages() %} {% if messages %}
         <div class="result text-center mt-5">
-            {% if messages[1]|float < 0.6 %}
+            {% if messages[1]|float < 0.5 %}
             <img src="{{ messages[0] }}" width="360" />
             <h5 class="bottom-text">
                 I can't classify the object in the uploaded image. Please note

@@ -153,6 +153,10 @@ body {
     padding: 1rem;
 }
 
+.demo_mp4 {
+    margin-top: 4rem;
+}
+
 /* new styles for smaller screens */
 @media (max-width: 767px) {
     .demo-text {
