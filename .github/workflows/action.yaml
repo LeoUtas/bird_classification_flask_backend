@@ -4,7 +4,8 @@ name: Build and Deploy to heroku.
 # Run workflow on every push to main branch.
 on:
     push:
-        branches: [master]
+        branches:
+            - master
 
 # Your workflows jobs.
 jobs:
