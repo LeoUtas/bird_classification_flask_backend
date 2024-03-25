@@ -6,8 +6,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 
-# Install tensorflow cpu
-RUN pip install tensorflow==2.13.0
+RUN pip install Flask[async]
 
 
 COPY requirements.txt .

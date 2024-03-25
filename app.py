@@ -1,5 +1,5 @@
-import os, sys, json, shutil
-
+import os, sys
+from dotenv import load_dotenv
 
 # ________________ HANDLE THE PATH THING ________________ #
 # get the absolute path of the script's directory
@@ -9,159 +9,29 @@ parent_path = os.path.dirname(script_path)
 sys.path.append(parent_path)
 
 
-from flask import Flask, render_template, request, redirect, flash, session
-from Bird_classification.make_prediction import (
-    MobileNet_classifier,
-    Class_indices,
-)
-from Bird_classification.data_ingestion import Data_ingestion
-from exception import CustomException
-from time import time
-from datetime import datetime
+from flask import Flask
+from endpoints.mobilenet_endpoint import mobilenet_bp
 
-UPLOAD_FOLDER = os.path.join("static", "images")
-DETECT_FOLDER = os.path.join("runs", "detect", "predict")
+# from endpoints.openai_endpoint import openai_funfact_bp
 
 
 app = Flask(__name__, static_folder="static")
 
-class_indices_handler = Class_indices()
-
-app.secret_key = "secret key"
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-app.config["DETECT_FOLDER"] = DETECT_FOLDER
+load_dotenv()
+app.secret_key = os.getenv("SECRET_KEY")
 
 
 @app.route("/")
 def render_index():
-    return render_template("index.html", current_year=datetime.now().year)
+    return "hello world"
 
 
-@app.route("/MobileNet")
-def render_MobileNet():
-    return render_template("MobileNet.html", current_year=datetime.now().year)
-
-
-@app.route("/MobileNet", methods=["POST"])
-def upload_image_MobileNet():
-    try:
-        if request.method == "POST":
-            if "image" not in request.files:
-                flash("There is no file")
-                return redirect(request.url)
-
-            image = request.files["image"]
-
-            if image.filename == "":
-                flash("No image uploaded")
-                return redirect(request.url)
-
-            if image:
-                start_time = time()
-
-                """
-                The following code is to work around a bug occuring when the current image saved in the static/images has the same name with a being-uploaded one. Therefore, using time() to generate unique_image_name.
-                """
-
-                # remove previous detection/s
-                path_to_remove = os.path.join(app.config["UPLOAD_FOLDER"], "detect")
-                if os.path.exists(path_to_remove):
-                    shutil.rmtree(path_to_remove)
-
-                # get the original file extension (e.g., .jpg, .png)
-                file_ext = os.path.splitext(image.filename)[1]
-                # generate a unique filename by appending a timestamp to the original filename
-                unique_image_name = f"{int(time())}{file_ext}"
-
-                full_image_path = os.path.join(
-                    app.config["UPLOAD_FOLDER"], unique_image_name
-                )
-                image.save(full_image_path)
-
-                # delete the previous image if there is one
-                previous_image_path = session.get("last_image_path")
-                if previous_image_path and os.path.exists(previous_image_path):
-                    os.remove(previous_image_path)
-
-                # save the path of the current image for next time
-                session["last_image_path"] = full_image_path
-
-                Data_ingestion_handler = Data_ingestion(unique_image_name)
-                image = Data_ingestion_handler.make_data_in()
-
-                classifier = MobileNet_classifier(image)
-
-                (
-                    predicted_probability,
-                    predicted_label,
-                    predicted_scientific_name,
-                    predicted_index,
-                ) = classifier.make_prediction()
-
-                predicted_label = predicted_label.capitalize()
-                # to handle the scientific name styling
-                predicted_scientific_name = (
-                    predicted_scientific_name[0].capitalize()
-                    + predicted_scientific_name[1:].lower()
-                )
-                predicted_index = int(predicted_index)
-
-                execution_time = round(time() - start_time, 2)
-
-                flash(full_image_path)
-                flash(round(float(predicted_probability), 4))
-                flash(predicted_label)
-                flash(predicted_scientific_name)
-                flash(execution_time)
-
-                return redirect("/MobileNet")
-
-    except Exception as e:
-        raise CustomException(e, sys)
-
-
-@app.route("/bird-classes")
-def render_bird_classes():
-    # load the class_indices.json file
-    json_file_path = os.path.join(
-        script_path, os.path.join("Bird_classification", "data", "class_indices.json")
-    )
-
-    with open(
-        json_file_path,
-        "r",
-    ) as json_file:
-        class_indices = json.load(json_file)
-
-    # convert to a list of tuples
-    bird_classes_list = [
-        (index, info["label"], info["scientific_name"])
-        for index, info in class_indices.items()
-    ]
-
-    return render_template(
-        "bird_classes.html",
-        bird_classes=bird_classes_list,
-        current_year=datetime.now().year,
-    )
-
-
-@app.route("/test-imgs")
-def render_test_imgs():
-    image_dir = os.path.join(script_path, os.path.join("static", "test_imgs"))
-    image_files = [
-        file
-        for file in os.listdir(image_dir)
-        if file.lower().endswith((".jpg", ".jpeg"))
-    ]
-    image_files.sort()  # ensure files are sorted by name
-    return render_template(
-        "test_imgs.html", image_files=image_files, current_year=datetime.now().year
-    )
+app.register_blueprint(mobilenet_bp, url_prefix="/mobilenet")
+# app.register_blueprint(openai_funfact_bp, url_prefix="/openai")
 
 
 if __name__ == "__main__":
     port = int(
-        os.environ.get("PORT", 5000)
+        os.environ.get("PORT", 5001)
     )  # define port so we can map container port to localhost
-    app.run(host="0.0.0.0", port=port, debug=True)  # define 0.0.0.0 for Docker
+    app.run(host="0.0.0.0", port=port, debug=False)  # define 0.0.0.0 for Docker

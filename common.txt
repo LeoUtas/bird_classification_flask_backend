@@ -1,0 +1,5 @@
+docker build --platform linux/amd64 -t registry.heroku.com/birdclassification-backend/web .
+
+docker push registry.heroku.com/birdclassification-backend/web
+
+heroku container:release web --app birdclassification-backend
