@@ -4,8 +4,6 @@
     <li>
       <a href="#introduction">Introduction</a>
     </li>
-    <li><a href="#demo">Demo</a></li>
-    <li><a href="#technical-tools">Technical Tools</a></li>
     <li><a href="#data-source">Data source</a></li>
     <li><a href="#the-design">The design</a></li>
     <li><a href="#how-to-use-the-source-code">How to use the source code</a></li>
@@ -35,41 +33,11 @@
         </li>
         <br>
         <li>
-            I attempted to solve the task using 4 different tools (i.e., InceptionV3, MobileNetV1, MobileNetV2 and YOLOv8). After evaluating performance metrics and processing speed, MobileNetV1 was chosen as the most suitable model for this task <a href="https://bird-classification524-b310a542793a.herokuapp.com/">(visit the live demo)</a>.
-        </li>
-        <br>
-        <li>
-            Although the YOLO8n object detection feature enhances functionality, it is not critical for this specific task and could potentially reduce performance speed. YOLO8n is therefore excluded from this version. Nevertheless, in situations where object measurement is key, like in the detection and measurement of fish samples, integrating an object detector like YOLO8n can be extremely valuable. This repository includes the source code for the web application.
+            I attempted to solve the task using 4 different tools (i.e., InceptionV3, MobileNetV1, MobileNetV2 and YOLOv8). After evaluating performance metrics and processing speed, YOLOv8 was chosen as the most suitable model for this task.
         </li>        
     </ul>
 
-This repository offers source code for a web application using MobileNetV1 <a href="https://bird-classification524-b310a542793a.herokuapp.com/">(visit the live demo)</a>.
-
-### Demo
-
-<p align="center">
-  <a href="GIF">
-    <img src="/video/bird-app524.gif" width="480" alt=""/>
-  </a>
-</p>
-
-Try a live version: <a href="https://bird-classification524-b310a542793a.herokuapp.com/"> Demo </a>
-
-### Technical tools
-
-The orginal paper of MobileNet <a href="https://arxiv.org/pdf/1704.04861.pdf">(Howard, A.G. et al., 2017)</a>.
-
-The application documentation of <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/mobilenet/MobileNet"> MobileNet </a> using TensorFlow v2.14.0.
-
--   TensorFlow
--   numpy
--   pandas
--   Flask
--   JavaScript (plain)
--   HTML
--   CSS (Bootstrap)
--   Docker
--   Github Action
+This repository offers source code for the backend of the Bird Classification IOS app. Although, the name of the repository can be confusing because MobileNet was the model of choice for this task before, after testing the speed performance and other aspects, I decided to make YOLOv8 the chosen model.
 
 ### Data source
 
