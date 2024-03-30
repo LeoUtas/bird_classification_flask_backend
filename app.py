@@ -10,9 +10,8 @@ sys.path.append(parent_path)
 
 
 from flask import Flask
-from endpoints.mobilenet_endpoint import mobilenet_bp
 
-# from endpoints.openai_endpoint import openai_funfact_bp
+from endpoints.YOLOv8_endpoint import yolov8_bp
 
 
 app = Flask(__name__, static_folder="static")
@@ -26,12 +25,11 @@ def render_index():
     return "hello world"
 
 
-app.register_blueprint(mobilenet_bp, url_prefix="/mobilenet")
-# app.register_blueprint(openai_funfact_bp, url_prefix="/openai")
+app.register_blueprint(yolov8_bp, url_prefix="/yolov8")
 
 
 if __name__ == "__main__":
     port = int(
-        os.environ.get("PORT", 5001)
+        os.environ.get("PORT", 5000)
     )  # define port so we can map container port to localhost
     app.run(host="0.0.0.0", port=port, debug=False)  # define 0.0.0.0 for Docker
