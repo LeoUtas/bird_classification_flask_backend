@@ -37,7 +37,7 @@
         </li>        
     </ul>
 
-This repository offers source code for the backend of the <a href="https://github.com/LeoUtas/bird_classification_react-native.git">Bird Classification IOS app</a>. Although the name of the repository can be confusing because MobileNet was the model of choice for this task before, after testing the speed performance and other aspects, I decided to make YOLOv8 the chosen model.
+This repository offers source code for the backend of the <a href="https://github.com/LeoUtas/bird_classification_react-native.git">Bird Classification IOS app</a>.
 
 ### Data source
 
