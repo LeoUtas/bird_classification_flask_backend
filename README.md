@@ -15,24 +15,7 @@
 ### Introduction
 
 <ul style="padding-left: 20px; list-style-type: circle;">
-        <li>The project includes 4 repositories:
-            <ul>                
-                <li>
-                <a href="https://github.com/LeoUtas/bird_classification_research.git" style="text-decoration: none; color: #3498db;">Bird classification research</a>
-                </li>
-                <li>
-                <a href="https://github.com/LeoUtas/bird_classification_flask_MobileNet.git" style="text-decoration: none; color: #3498db;">Bird classification web application using MobileNet model</a>
-                </li>
-                <li>
-                <a href="https://github.com/LeoUtas/bird_classification_flask_YOLOv8.git" style="text-decoration: none; color: #3498db;">Bird classification web application using YOLOv8 model</a>
-                </li>
-                <li>
-                <a href="https://github.com/LeoUtas/bird_classification_flask_2models.git">Bird classification web app using MobileNet and YOLOv8 for better comparing model performances</a>
-                </li>                                
-            </ul>
-        </li>
-        <br>
-        <li>
+        
             I attempted to solve the task using 4 different tools (i.e., InceptionV3, MobileNetV1, MobileNetV2 and YOLOv8). After evaluating performance metrics and processing speed, YOLOv8 was chosen as the most suitable model for this task.
         </li>        
     </ul>
