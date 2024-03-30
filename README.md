@@ -14,11 +14,7 @@
 
 ### Introduction
 
-<ul style="padding-left: 20px; list-style-type: circle;">
-        
-            I attempted to solve the task using 4 different tools (i.e., InceptionV3, MobileNetV1, MobileNetV2 and YOLOv8). After evaluating performance metrics and processing speed, YOLOv8 was chosen as the most suitable model for this task.
-        </li>        
-    </ul>
+I attempted to solve the task using 4 different tools (i.e., InceptionV3, MobileNetV1, MobileNetV2 and YOLOv8). After evaluating performance metrics and processing speed, YOLOv8 was chosen as the most suitable model for this task.
 
 This repository offers source code for the backend of the <a href="https://github.com/LeoUtas/bird_classification_react-native.git">Bird Classification IOS app</a>.
 
