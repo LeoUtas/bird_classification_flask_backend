@@ -71,9 +71,9 @@ class YOLOv8_classifier:
 
 
 # test code execution
-# if __name__ == "__main__":
-#     image = os.path.join(parent_path, "static", "image_to_classify")
-#     print(image)
-#     classifier = YOLOv8_classifier(image)
-#     prediction = classifier.make_prediction()
-#     print(prediction)
+if __name__ == "__main__":
+    image = os.path.join(parent_path, "static", "image_to_classify")
+    print(image)
+    classifier = YOLOv8_classifier(image)
+    prediction = classifier.make_prediction()
+    print(prediction)
