@@ -30,7 +30,7 @@ UPLOAD_FOLDER = os.path.join(parent_path, "static", "image_to_classify")
 
 
 @yolov8_bp.route("/bird-classifier", methods=["POST"])
-async def upload_image_YOLOv8():
+def upload_image_YOLOv8():
     try:
 
         # empty the folder image_to_classify before doing anything
@@ -78,12 +78,24 @@ async def upload_image_YOLOv8():
 
                 execution_time = round(time() - start_time, 2)
 
+        # set the threshold to 0.65
+        if round(float(predicted_probability), 4) >= 0.65:
             return jsonify(
                 {
                     "predicted_probability": round(float(predicted_probability), 4),
                     "predicted_label": predicted_label,
                     "predicted_scientific_name": predicted_scientific_name,
                     "predicted_index": "NA",
+                    "execution_time": execution_time,
+                }
+            )
+        else:
+            return jsonify(
+                {
+                    "predicted_probability": round(float(predicted_probability), 4),
+                    "predicted_label": "Sorry, I can't recognize this birdie.",
+                    "predicted_scientific_name": "",
+                    "predicted_index": "",
                     "execution_time": execution_time,
                 }
             )
