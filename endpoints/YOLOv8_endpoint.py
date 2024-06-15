@@ -30,7 +30,7 @@ UPLOAD_FOLDER = os.path.join(parent_path, "static", "image_to_classify")
 
 
 @yolov8_bp.route("/bird-classifier", methods=["POST"])
-def upload_image_YOLOv8():
+async def upload_image_YOLOv8():
     try:
 
         # empty the folder image_to_classify before doing anything

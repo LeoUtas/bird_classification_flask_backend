@@ -30,6 +30,6 @@ app.register_blueprint(yolov8_bp, url_prefix="/yolov8")
 
 if __name__ == "__main__":
     port = int(
-        os.environ.get("PORT", 5001)
+        os.environ.get("PORT", 5000)
     )  # define port so we can map container port to localhost
     app.run(host="0.0.0.0", port=port, debug=False)  # define 0.0.0.0 for Docker
